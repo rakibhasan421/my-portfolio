@@ -56,7 +56,7 @@ function useInView(threshold = 0.12) {
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVisible(true); }, { threshold });
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
-  }, []);
+  }, [threshold]);
   return [ref, visible];
 }
 
@@ -186,7 +186,7 @@ function Hero() {
   const isMobile = useIsMobile();
   const [count, setCount] = useState(0);
   useEffect(() => {
-    const t = setInterval(() => setCount(c => c < 3 ? c + 1 : c), 500);
+    const t = setInterval(() => setCount(c => c < 4 ? c + 1 : c), 500);
     return () => clearInterval(t);
   }, []);
 
@@ -244,7 +244,7 @@ function Hero() {
                 textTransform: "uppercase", color: "#2d6a4f", marginBottom: "1.6rem",
               }}>
                 <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#52b788", display: "inline-block", animation: "blink 2s infinite" }} />
-                Open to Opportunities · Dhaka
+                Open to Opportunities ◉ Dhaka ◉ Remote
               </div>
             </Fade>
 
